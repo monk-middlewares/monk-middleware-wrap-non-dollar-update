@@ -1,4 +1,4 @@
-module.exports = function wrapeNon$UpdateMiddleware (context) {
+module.exports = function wrapNon$UpdateMiddleware (context) {
   return function (next) {
     return function (args, method) {
       if ((args.options || {}).wrapNon$UpdateField !== true || !args.update) {
