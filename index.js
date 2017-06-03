@@ -1,7 +1,11 @@
 module.exports = function wrapNon$UpdateMiddleware (context) {
   return function (next) {
     return function (args, method) {
-      if ((args.options || {}).wrapNon$UpdateField !== true || !args.update) {
+			var wrap = (args.options || {}).wrapNon$UpdateField
+			if (typeof wrap !== 'undefined') {
+				delete args.options.wrapNon$UpdateField
+			}
+      if (wrap !== true || !args.update) {
         return next(args, method)
       }
 
